@@ -24,7 +24,8 @@ module OmniAuth
 
       def identity_url
         user_fields = "about,can_see_nsfw,created,email,first_name,full_name,hide_pledges,image_url,is_email_verified,last_name,like_count,social_connections,thumb_url,url,vanity"
-        "https://www.patreon.com/api/oauth2/v2/identity?fields[user]=#{user_fields}&include=memberships"
+        membership_fields = "currently_entitled_amount_cents,patron_status"
+        "https://www.patreon.com/api/oauth2/v2/identity?fields[user]=#{user_fields}&include=memberships&fields[memberships]=#{membership_fields}"
       end
 
       def raw_info
