@@ -5,7 +5,7 @@ module OmniAuth
     class Patreon < OmniAuth::Strategies::OAuth2
 
       DEFAULT_SCOPE = "identity".freeze
-      
+
       option :name, 'patreon'
 
       option :client_options, {
@@ -24,7 +24,7 @@ module OmniAuth
 
       def identity_url
         user_fields = "about,can_see_nsfw,created,email,first_name,full_name,hide_pledges,image_url,is_email_verified,last_name,like_count,social_connections,thumb_url,url,vanity"
-        "https://www.patreon.com/api/oauth2/v2/identity?fields[user]=#{user_fields}"
+        "https://www.patreon.com/api/oauth2/v2/identity?fields[user]=#{user_fields}&include=memberships"
       end
 
       def raw_info
